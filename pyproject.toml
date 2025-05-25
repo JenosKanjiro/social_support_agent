@@ -1,0 +1,42 @@
+[project]
+name = "social-support-agent"
+version = "0.1.0"
+description = "Social Support Application Processing agent."
+authors = [
+    {name = "Yunus Khan",email = "sm.yunusalikhan@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "langchain-core (>=0.3.60,<0.4.0)",
+    "langgraph (>=0.4.5,<0.5.0)",
+    "langchain-ollama (>=0.3.3,<0.4.0)",
+    "typing-extensions (>=4.13.2,<5.0.0)",
+    "easyocr (>=1.7.2,<2.0.0)",
+    "pydantic (>=2.11.4,<3.0.0)",
+    "pypdf (>=5.5.0,<6.0.0)",
+    "pandas (>=2.2.3,<3.0.0)",
+    "psycopg2-binary (>=2.9.10,<3.0.0)",
+    "xgboost (>=3.0.1,<4.0.0)",
+    "numpy (>=2.2.6,<3.0.0)",
+    "llama-index (>=0.12.37,<0.13.0)",
+    "llama-index-embeddings-ollama (>=0.6.0,<0.7.0)",
+    "gradio (>=5.30.0,<6.0.0)",
+    "scikit-learn (>=1.6.1,<2.0.0)",
+    "openpyxl (>=3.1.5,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+black = "^25.1.0"
+isort = "^6.0.1"
+flake8 = "^7.2.0"
+mypy = "^1.15.0"
+jupyter = "^1.1.1"
+

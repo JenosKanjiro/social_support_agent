@@ -1,0 +1,62 @@
+# Production-optimized Dockerfile
+FROM python:3.10-slim
+
+# Set environment variables for production
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONHASHSEED=random \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    ENV=production
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    libpq-dev \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    libgomp1 \
+    libgeos-dev \
+    nginx \
+    supervisor \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create application user
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+
+# Set work directory
+WORKDIR /app
+
+# Copy requirements and install Python dependencies
+COPY deployment/requirements/requirements-prod.txt .
+RUN pip install --no-cache-dir -r requirements-prod.txt
+
+# Copy application code
+COPY --chown=appuser:appuser . .
+
+# Copy nginx configuration
+COPY deployment/config/nginx.conf /etc/nginx/sites-available/default
+
+# Create necessary directories
+RUN mkdir -p /app/data /app/logs /app/storage /var/log/supervisor && \
+    chown -R appuser:appuser /app /var/log/supervisor
+
+# Copy supervisor configuration
+COPY deployment/config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Remove development files
+RUN rm -rf tests/ docs/ .git/ .gitignore README.md deployment/
+
+# Expose ports
+EXPOSE 80 7860
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:80/health || exit 1
+
+# Start supervisor
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

@@ -1,0 +1,15 @@
+2025-05-23 09:04:23,648 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-05-23 09:04:24,789 - httpx - INFO - HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-05-23 09:04:25,092 - httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2025-05-23 09:44:56,201 - wrapper - INFO - Starting application processing
+2025-05-23 09:44:56,252 - wrapper - INFO - Found 0 checkpoints in history
+2025-05-23 09:44:56,253 - wrapper - INFO - Current state:{'extraction_filepath_dict': {'emirates_id_file_path': 'C:\\Users\\smyun\\AppData\\Local\\Temp\\tmp5ld1leox.png', 'bank_statements_file_path': 'C:\\Users\\smyun\\AppData\\Local\\Temp\\tmpb8gme1vb.pdf', 'credit_report_file_path': 'C:\\Users\\smyun\\AppData\\Local\\Temp\\tmpqx4rfeur.png', 'resume_file_path': 'C:\\Users\\smyun\\AppData\\Local\\Temp\\tmph9wid81p.pdf', 'assets_liabilities_file_path': 'C:\\Users\\smyun\\AppData\\Local\\Temp\\tmpatkyvc52.xlsx'}, 'application_data': {'applicant_id': '0817dd09-5c86-4d13-945f-cb25b27f9bd2', 'first_name': 'Yunus', 'last_name': 'Khan', 'full_name': 'Yunus Khan', 'date_of_birth': 'date_of_birth', 'gender': 'Male', 'nationality': 'UAE', 'emirates_id': '784-1997-3757574-1', 'address': 'Abu Dhabi', 'monthly_income': 1000, 'assets': 10000, 'liabilities': 100000, 'household_size': 4, 'age': 35, 'education_level': 'high school', 'marital_status': 'Married'}, 'cached_extraction_data_file_path': 'C:\\Users\\smyun\\Desktop\\UAE\\social_support_agent\\storage\\cached_extraction_data_file_path.pkl', 'messages': [('user', 'CODE-STARTAPPLICATION')]}
+2025-05-23 09:45:16,571 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-23 09:45:21,065 - agents.supervisor - INFO - --- Workflow Transition: Supervisor to EXTRACTOR ---
+2025-05-23 09:45:21,148 - agents.extractor - INFO - --- Workflow Transition: Extractor to Validator ---
+2025-05-23 09:46:44,454 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-23 09:46:56,424 - agents.validator - INFO - --- Workflow Transition: Validator to Decision Maker ---
+2025-05-23 09:46:59,217 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-23 09:47:20,884 - agents.decision_maker - INFO - --- Workflow Transition: Decision Maker to Recommender ---
+2025-05-23 09:47:25,242 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-23 09:48:12,632 - agents.recommender - INFO - --- Workflow Transition: Recommender to Supervisor ---
