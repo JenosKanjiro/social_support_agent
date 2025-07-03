@@ -4,6 +4,8 @@
 [![Poetry](https://img.shields.io/badge/dependency%20manager-poetry-blue.svg)](https://python-poetry.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+Author: Yunus Khan, Contact Email: sm.yunusalikhan@gmail.com
+
 # Social Support Application Processing System
 
 A comprehensive AI-powered system for processing social support applications in the UAE. The system extracts information from various documents, validates the data, makes eligibility decisions using machine learning, and provides personalized recommendations.
